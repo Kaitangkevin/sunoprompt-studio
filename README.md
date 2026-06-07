@@ -2,7 +2,9 @@
 
 SunoPrompt Studio is a step-by-step prompt builder for Suno AI music creators. It helps users turn raw song ideas into structured prompts for lyrics, music style, vocals, instruments, mood, and arrangement.
 
-中文说明：这是一个面向 Suno AI 音乐创作者的网页工具。用户通过一步步回答问题，选择歌曲内容、情绪、语言、风格、乐器、演唱方式和特殊要求，最后生成一段可以直接复制给 ChatGPT 的完整 prompt。
+## Website
+
+Visit the live site: [https://kaitangkevin.github.io/sunoprompt-studio/](https://kaitangkevin.github.io/sunoprompt-studio/)
 
 ## Creator
 
@@ -71,13 +73,13 @@ npm run build
 
 The app includes templates for:
 
-- 高燃游戏剪辑歌曲
-- 悲伤英文情歌
-- 乡村 R&B
-- 赛博朋克电子音乐
-- 中文治愈流行歌
-- 旅行 Vlog BGM
-- 纯音乐游戏 BGM
+- High-energy game montage song
+- Sad English love song
+- Country R&B
+- Cyberpunk electronic music
+- Healing Chinese pop song
+- Travel vlog BGM
+- Instrumental game BGM
 
 ## Future Ideas
 
