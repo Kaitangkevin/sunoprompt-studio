@@ -1,6 +1,6 @@
 import type { SongForm } from "@/types/prompt";
 
-const fallback = (value: string | string[], empty = "未填写") => {
+const fallback = (value: string | string[], empty = "Not provided") => {
   if (Array.isArray(value)) {
     return value.length ? value.join(", ") : empty;
   }
@@ -9,31 +9,31 @@ const fallback = (value: string | string[], empty = "未填写") => {
 };
 
 export const getLyricLanguage = (form: SongForm) => {
-  return form.lyricLanguage === "自定义语言" ? fallback(form.customLanguage, "自定义语言") : form.lyricLanguage;
+  return form.lyricLanguage === "Custom Language" ? fallback(form.customLanguage, "Custom Language") : form.lyricLanguage;
 };
 
 export const getStructure = (form: SongForm) => {
-  return form.structure === "自定义结构" ? fallback(form.customStructure, "自定义结构") : form.structure;
+  return form.structure === "Custom Structure" ? fallback(form.customStructure, "Custom Structure") : form.structure;
 };
 
 export const getAccent = (form: SongForm) => {
-  return form.accent === "自定义" ? fallback(form.customAccent, "自定义口音/语言") : form.accent;
+  return form.accent === "Custom" ? fallback(form.customAccent, "Custom accent or singing language") : form.accent;
 };
 
 export const getBpm = (form: SongForm) => {
-  return form.bpmRange === "自定义 BPM" ? fallback(form.customBpm, "自定义 BPM") : form.bpmRange;
+  return form.bpmRange === "Custom BPM" ? fallback(form.customBpm, "Custom BPM") : form.bpmRange;
 };
 
 const languageGuidance = (language: string) => {
   if (language === "English") {
-    return "- 如果是英文歌，歌词要使用自然、适合真实演唱的英语母语表达，不要写成作文或直译句子。";
+    return "- If the song is in English, write natural lyrics that sound like native English songwriting, not essay-like prose or literal translation.";
   }
 
-  if (language === "中文") {
-    return "- 如果是中文歌，歌词要有画面感、口语自然、有旋律感，不要太书面化。";
+  if (language === "Chinese (Mandarin)") {
+    return "- If the song is in Mandarin Chinese, write vivid, singable, image-rich lyrics that feel natural and not overly formal.";
   }
 
-  return "- 歌词语言需要符合该语言真实歌曲的表达习惯，避免翻译腔。";
+  return "- Make the lyrics sound natural for the selected language and avoid translation-like phrasing.";
 };
 
 export const buildPrompt = (form: SongForm) => {
@@ -42,67 +42,67 @@ export const buildPrompt = (form: SongForm) => {
   const accent = getAccent(form);
   const bpm = getBpm(form);
 
-  return `请你根据以下信息，帮我创作一首适合 Suno AI 生成音乐的歌曲内容。
+  return `Please create a complete song concept for Suno AI based on the information below.
 
-Creator：
+Creator:
 ${fallback(form.creator)}
 
-歌曲主题：
+Song theme:
 ${fallback(form.theme)}
 
-歌曲故事：
+Song story:
 ${fallback(form.story)}
 
-想表达的核心内容：
+Core message:
 ${fallback(form.message)}
 
-歌曲适合的场景：
+Best use case or scene:
 ${fallback(form.scene)}
 
-歌曲情绪：
+Mood:
 ${fallback(form.moods)}
 
-歌词语言：
+Lyric language:
 ${language}
 
-歌曲结构：
+Song structure:
 ${structure}
 
-必须出现的词：
+Required words or phrases:
 ${fallback(form.requiredWords)}
 
-音乐风格：
+Music styles:
 ${fallback(form.styles)}
 
-乐器选择：
+Instruments:
 ${fallback(form.instruments)}
 
-演唱方式：
+Vocal direction:
 ${fallback(form.vocals)}
 
-演唱语言和口音：
+Singing language or accent:
 ${accent}
 
-节奏速度：
+Tempo and BPM:
 ${fallback(form.tempo)} / ${bpm}
 
-请你输出以下内容：
+Please output:
 
-1. 完整歌词 Lyrics
-2. 适合 Suno 的 Style Prompt
-3. 歌曲结构说明
-4. 演唱方式说明
-5. 乐器和编曲说明
-6. 适合直接粘贴到 Suno 的内容
+1. Full lyrics
+2. A Suno-ready Style Prompt
+3. Song structure notes
+4. Vocal performance notes
+5. Instrumentation and arrangement notes
+6. Copy-ready content suitable for Suno
 
-额外要求：
+Additional requirements:
 
-- 歌词要自然，适合真实演唱，不要像作文。
+- The lyrics must feel natural, singable, and suitable for a real song.
 ${languageGuidance(language)}
-- 必须出现的词要自然融入歌词，不要生硬堆砌。
-- Style Prompt 必须控制在 1000 个字符以内。
-- Style Prompt 要清楚描述音乐风格、节奏、乐器、情绪、演唱方式和声音质感。
-- Style 里要尽量使用 Suno 容易理解的音乐描述词。
-- Style 需要帮助 Suno 更准确生成清晰的人声、明确的编曲和稳定的音乐结构。
-- 请分别输出「Lyrics」和「Style」两个部分，方便我直接复制到 Suno。`;
+- Required words or phrases must be blended naturally into the lyrics, not forced into random lines.
+- Keep the Style Prompt under 1000 characters.
+- The Style Prompt must clearly describe genre, rhythm, instruments, mood, vocal delivery, and sonic texture.
+- Use music description terms that Suno can understand easily.
+- The Style Prompt should help Suno generate clear vocals, a stable arrangement, and a coherent song structure.
+- Separate the final answer into clear "Lyrics" and "Style" sections so I can copy them into Suno directly.`;
 };

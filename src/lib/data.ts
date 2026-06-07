@@ -1,8 +1,8 @@
 import type { InstrumentGroup, QuickTemplate, SongForm } from "@/types/prompt";
 
-export const STORAGE_KEY = "sunoprompt-studio-form";
+export const STORAGE_KEY = "sunoprompt-studio-form-v2";
 
-export const creatorName = "SunoPrompt Studio Creator";
+export const creatorName = "Kai Tang / Kaitangkevin";
 
 export const defaultForm: SongForm = {
   creator: creatorName,
@@ -27,38 +27,46 @@ export const defaultForm: SongForm = {
 };
 
 export const themeOptions = [
-  "爱情",
-  "失恋",
-  "乡村生活",
-  "城市夜晚",
-  "游戏剪辑",
-  "旅行",
-  "励志",
-  "孤独",
-  "回忆",
-  "友情"
+  "Love",
+  "Heartbreak",
+  "Country Life",
+  "City Night",
+  "Game Montage",
+  "Travel",
+  "Motivation",
+  "Loneliness",
+  "Memories",
+  "Friendship"
 ];
 
 export const moodOptions = [
-  "开心",
-  "悲伤",
-  "孤独",
-  "浪漫",
-  "温柔",
-  "热血",
-  "高燃",
-  "治愈",
-  "黑暗",
-  "梦幻",
-  "怀旧",
-  "压抑",
-  "自由",
-  "史诗感",
-  "电影感",
-  "松弛感"
+  "Happy",
+  "Sad",
+  "Lonely",
+  "Romantic",
+  "Gentle",
+  "Passionate",
+  "High-energy",
+  "Healing",
+  "Dark",
+  "Dreamy",
+  "Nostalgic",
+  "Tense",
+  "Free",
+  "Epic",
+  "Cinematic",
+  "Laid-back"
 ];
 
-export const languageOptions = ["English", "中文", "日文", "韩文", "西班牙语", "法语", "自定义语言"];
+export const languageOptions = [
+  "English",
+  "Chinese (Mandarin)",
+  "Japanese",
+  "Korean",
+  "Spanish",
+  "French",
+  "Custom Language"
+];
 
 export const structureOptions = [
   "Verse + Chorus",
@@ -67,7 +75,7 @@ export const structureOptions = [
   "Intro + Verse + Chorus + Bridge + Outro",
   "Rap Verse + Hook",
   "Intro + Verse 1 + Pre-Chorus + Chorus + Verse 2 + Bridge + Final Chorus + Outro",
-  "自定义结构"
+  "Custom Structure"
 ];
 
 export const styleOptions = [
@@ -181,22 +189,22 @@ export const vocalOptions = [
   "No Vocal / Instrumental"
 ];
 
-export const accentOptions = ["American English", "British English", "Chinese Mandarin", "Japanese", "Korean", "自定义"];
+export const accentOptions = ["American English", "British English", "Chinese Mandarin", "Japanese", "Korean", "Custom"];
 
 export const tempoOptions = ["Slow", "Medium", "Fast", "Very Fast"];
 
-export const bpmOptions = ["60-80 BPM", "80-100 BPM", "100-120 BPM", "120-140 BPM", "140+ BPM", "自定义 BPM"];
+export const bpmOptions = ["60-80 BPM", "80-100 BPM", "100-120 BPM", "120-140 BPM", "140+ BPM", "Custom BPM"];
 
 export const quickTemplates: QuickTemplate[] = [
   {
-    name: "高燃游戏剪辑歌曲",
-    description: "快节奏、强鼓点、适合击杀集锦和热血剪辑。",
+    name: "High-energy Game Montage",
+    description: "Fast, aggressive, and built for highlight clips, battles, and esports edits.",
     values: {
-      theme: "游戏剪辑",
-      story: "主角从低谷一路反击，在关键时刻打出高光操作。",
-      message: "不服输、爆发、胜利前的最后一秒。",
-      scene: "游戏高光剪辑、短视频开场、电竞宣传片",
-      moods: ["热血", "高燃", "史诗感", "电影感"],
+      theme: "Game Montage",
+      story: "A player rises from a losing position and lands the decisive play in the final moment.",
+      message: "No surrender, peak focus, and the rush of winning under pressure.",
+      scene: "Gaming highlights, short-form edits, esports intros",
+      moods: ["Passionate", "High-energy", "Epic", "Cinematic"],
       lyricLanguage: "English",
       structure: "Rap Verse + Hook",
       requiredWords: "last shot, power up, no surrender",
@@ -208,14 +216,14 @@ export const quickTemplates: QuickTemplate[] = [
     }
   },
   {
-    name: "悲伤英文情歌",
-    description: "自然英文歌词、柔和人声、夜晚失恋氛围。",
+    name: "Sad English Love Song",
+    description: "Natural English lyrics, soft vocals, and a rainy late-night heartbreak mood.",
     values: {
-      theme: "失恋",
-      story: "一个人在雨夜回想已经结束的关系，舍不得却必须放手。",
-      message: "爱过是真的，离开也是真的。",
-      scene: "深夜独处、情绪短片、失恋歌单",
-      moods: ["悲伤", "孤独", "温柔", "怀旧"],
+      theme: "Heartbreak",
+      story: "Someone remembers a relationship that has ended on a rainy night, still loving but finally letting go.",
+      message: "The love was real, and so is the goodbye.",
+      scene: "Late-night playlists, emotional videos, breakup edits",
+      moods: ["Sad", "Lonely", "Gentle", "Nostalgic"],
       lyricLanguage: "English",
       requiredWords: "lonely night, city lights, almost home",
       styles: ["Pop", "R&B", "Lo-fi"],
@@ -226,14 +234,14 @@ export const quickTemplates: QuickTemplate[] = [
     }
   },
   {
-    name: "乡村 R&B",
-    description: "乡村故事感加现代 R&B groove。",
+    name: "Country R&B",
+    description: "Small-town storytelling with a modern R&B groove.",
     values: {
-      theme: "乡村生活",
-      story: "夏天傍晚在小镇路边开车，想起旧朋友和没说出口的话。",
-      message: "简单生活里的自由、遗憾和温柔。",
-      scene: "公路旅行、夕阳 Vlog、轻松短片",
-      moods: ["自由", "松弛感", "怀旧", "温柔"],
+      theme: "Country Life",
+      story: "A summer evening drive through a small town brings back old friends and words left unsaid.",
+      message: "Freedom, regret, and tenderness inside a simple life.",
+      scene: "Road trips, sunset vlogs, warm lifestyle videos",
+      moods: ["Free", "Laid-back", "Nostalgic", "Gentle"],
       lyricLanguage: "English",
       styles: ["Country", "R&B", "Soul"],
       instruments: ["Acoustic Guitar", "Bass Guitar", "Drum Kit", "Rhodes"],
@@ -243,14 +251,14 @@ export const quickTemplates: QuickTemplate[] = [
     }
   },
   {
-    name: "赛博朋克电子音乐",
-    description: "霓虹城市、冷感合成器、未来电影氛围。",
+    name: "Cyberpunk Electronic Music",
+    description: "Neon city atmosphere, cold synths, and futuristic cinematic tension.",
     values: {
-      theme: "城市夜晚",
-      story: "霓虹城市里的人在数字雨中寻找真实的心跳。",
-      message: "科技越冷，越想证明自己还活着。",
-      scene: "科幻短片、城市夜景、赛博朋克混剪",
-      moods: ["黑暗", "梦幻", "电影感", "孤独"],
+      theme: "City Night",
+      story: "A lonely person searches for a real heartbeat inside a neon city and digital rain.",
+      message: "The colder the technology becomes, the more human feeling matters.",
+      scene: "Sci-fi shorts, night city edits, cyberpunk trailers",
+      moods: ["Dark", "Dreamy", "Cinematic", "Lonely"],
       lyricLanguage: "English",
       styles: ["Cyberpunk", "Synthwave", "EDM"],
       instruments: ["Synthesizer", "Synth Bass", "Pad", "Glitch Effects", "Arpeggiator"],
@@ -260,16 +268,16 @@ export const quickTemplates: QuickTemplate[] = [
     }
   },
   {
-    name: "中文治愈流行歌",
-    description: "中文画面感歌词、温柔旋律、适合日常视频。",
+    name: "Healing Chinese Pop Song",
+    description: "Warm Mandarin pop with gentle vocals and cinematic daily-life imagery.",
     values: {
-      theme: "治愈",
-      story: "下班路上看到晚霞，忽然觉得生活虽然普通但还有期待。",
-      message: "慢慢来，所有疲惫都会被晚风接住。",
-      scene: "生活 Vlog、治愈短片、朋友圈配乐",
-      moods: ["治愈", "温柔", "松弛感", "开心"],
-      lyricLanguage: "中文",
-      requiredWords: "晚风, 路灯, 慢慢来",
+      theme: "Healing",
+      story: "After work, someone sees the sunset and realizes ordinary life can still hold quiet hope.",
+      message: "Take it slowly; every tired moment can be softened by the evening wind.",
+      scene: "Lifestyle vlogs, cozy videos, healing short films",
+      moods: ["Healing", "Gentle", "Laid-back", "Happy"],
+      lyricLanguage: "Chinese (Mandarin)",
+      requiredWords: "evening wind, streetlight, take it slowly",
       styles: ["Chinese Pop", "Folk", "Pop"],
       instruments: ["Acoustic Guitar", "Piano", "Pad", "Bass Guitar"],
       vocals: ["Female Vocal", "Soft Vocal"],
@@ -279,14 +287,14 @@ export const quickTemplates: QuickTemplate[] = [
     }
   },
   {
-    name: "旅行 Vlog BGM",
-    description: "轻快、无负担、适合转场和风景镜头。",
+    name: "Travel Vlog BGM",
+    description: "Bright, easygoing, and useful for scenery shots and smooth transitions.",
     values: {
-      theme: "旅行",
-      story: "从清晨出发到日落抵达陌生海边，一路都是新鲜感。",
-      message: "把生活调成冒险模式。",
-      scene: "旅行 Vlog、航拍、短视频转场",
-      moods: ["开心", "自由", "松弛感", "梦幻"],
+      theme: "Travel",
+      story: "A journey starts in the morning and ends by a new coastline at sunset.",
+      message: "Turn daily life into an adventure.",
+      scene: "Travel vlogs, drone shots, short-form transitions",
+      moods: ["Happy", "Free", "Laid-back", "Dreamy"],
       lyricLanguage: "English",
       styles: ["Pop", "House", "Afrobeat"],
       instruments: ["Electric Piano", "Drum Kit", "Pluck Synth", "Vocal Chop", "Ambient Texture"],
@@ -296,14 +304,14 @@ export const quickTemplates: QuickTemplate[] = [
     }
   },
   {
-    name: "纯音乐游戏 BGM",
-    description: "无歌词、循环友好、适合作为游戏场景音乐。",
+    name: "Instrumental Game BGM",
+    description: "No lyrics, loop-friendly, and designed for immersive game scenes.",
     values: {
-      theme: "游戏剪辑",
-      story: "进入神秘地图，探索未知遗迹，节奏逐渐推进。",
-      message: "冒险、未知、沉浸感。",
-      scene: "游戏关卡、直播背景、幻想世界探索",
-      moods: ["史诗感", "电影感", "梦幻", "黑暗"],
+      theme: "Game Montage",
+      story: "The listener enters a mysterious map, explores ancient ruins, and feels the rhythm slowly intensify.",
+      message: "Adventure, mystery, and immersion.",
+      scene: "Game levels, livestream background music, fantasy exploration",
+      moods: ["Epic", "Cinematic", "Dreamy", "Dark"],
       lyricLanguage: "English",
       styles: ["Game Music", "Orchestral", "Cinematic"],
       instruments: ["Full Strings", "Choir", "Cinematic Percussion", "Woodwinds", "Harp"],

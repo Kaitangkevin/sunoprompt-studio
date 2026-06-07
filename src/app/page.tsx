@@ -28,54 +28,54 @@ type Step = {
 
 const steps: Step[] = [
   {
-    title: "歌曲基本信息",
+    title: "Song Basics",
     kicker: "Step 1",
-    description: "先把主题、故事、核心表达和使用场景搭起来。"
+    description: "Start with the theme, story, core message, and best use case."
   },
   {
-    title: "歌词情绪",
+    title: "Lyric Mood",
     kicker: "Step 2",
-    description: "可以多选，情绪会影响歌词措辞和整体氛围。"
+    description: "Choose one or more moods to shape the language and atmosphere."
   },
   {
-    title: "歌词语言",
+    title: "Lyric Language",
     kicker: "Step 3",
-    description: "选择歌词语言，并补充不同语言的写作要求。"
+    description: "Choose the lyric language and add language-specific writing guidance."
   },
   {
-    title: "歌词结构",
+    title: "Song Structure",
     kicker: "Step 4",
-    description: "选择歌曲段落结构，默认推荐适合完整流行歌。"
+    description: "Select a section layout. The default works well for a complete pop song."
   },
   {
-    title: "特殊词",
+    title: "Required Words",
     kicker: "Step 5",
-    description: "输入必须自然出现的词、名字、品牌词或关键短语。"
+    description: "Add names, phrases, keywords, or branded terms that must appear naturally."
   },
   {
-    title: "音乐风格",
+    title: "Music Style",
     kicker: "Step 6",
-    description: "多选风格，让 ChatGPT 更准确组合 Suno Style。"
+    description: "Select one or more styles to guide the Suno Style Prompt."
   },
   {
-    title: "乐器选择",
+    title: "Instruments",
     kicker: "Step 7",
-    description: "按分类选择乐器和声音元素。"
+    description: "Choose instruments and sound design elements by category."
   },
   {
-    title: "演唱方式",
+    title: "Vocal Direction",
     kicker: "Step 8",
-    description: "配置人声类型、演唱语言和口音。"
+    description: "Set the vocal type, singing language, and accent direction."
   },
   {
-    title: "节奏与速度",
+    title: "Tempo and Speed",
     kicker: "Step 9",
-    description: "设置歌曲速度与 BPM 范围。"
+    description: "Choose the energy level and BPM range."
   },
   {
-    title: "生成最终 Prompt",
+    title: "Final Prompt",
     kicker: "Step 10",
-    description: "检查完整 Prompt，然后一键复制给 ChatGPT。"
+    description: "Review the complete prompt and copy it into ChatGPT."
   }
 ];
 
@@ -161,12 +161,14 @@ export default function Home() {
             <p className="mt-3 text-base text-slate-300 sm:text-lg">
               Create better lyrics and style prompts for Suno AI Music.
             </p>
-            <p className="mt-1 text-sm text-slate-400">一步步生成适合 Suno 的歌词与 Style Prompt。</p>
+            <p className="mt-1 text-sm text-slate-400">
+              Build copy-ready song briefs for lyrics, style, vocals, instruments, mood, and arrangement.
+            </p>
           </div>
 
           <div className="rounded-lg border border-white/10 bg-studio-panel/80 p-4 text-sm text-slate-300">
             <span className="block text-xs uppercase tracking-[0.2em] text-studio-gold">Creator</span>
-            <span className="mt-1 block text-lg font-semibold text-white">{form.creator || "SunoPrompt Studio Creator"}</span>
+            <span className="mt-1 block text-lg font-semibold text-white">{form.creator || "Kai Tang / Kaitangkevin"}</span>
           </div>
         </header>
 
@@ -278,8 +280,8 @@ function TemplatePanel({ onApply }: { onApply: (values: Partial<SongForm>) => vo
     <section className="rounded-lg border border-white/10 bg-studio-panel/80 p-5">
       <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-white">快速模板</h2>
-          <p className="text-sm text-slate-400">点击后会自动填充一组音乐创作方向。</p>
+          <h2 className="text-lg font-semibold text-white">Quick Templates</h2>
+          <p className="text-sm text-slate-400">Click a template to fill in a complete creative direction.</p>
         </div>
       </div>
       <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
@@ -313,8 +315,8 @@ function PromptPreview({
       <section className="rounded-lg border border-studio-cyan/20 bg-[#08111d]/95 p-5 shadow-glow">
         <div className="mb-4 flex items-center justify-between gap-3">
           <div>
-            <h2 className="text-lg font-semibold text-white">实时 Prompt 预览</h2>
-            <p className="text-sm text-slate-400">刷新页面也会保留当前内容。</p>
+            <h2 className="text-lg font-semibold text-white">Live Prompt Preview</h2>
+            <p className="text-sm text-slate-400">Your draft is automatically saved in this browser.</p>
           </div>
           <button
             type="button"
@@ -345,38 +347,38 @@ function renderStep(
           <TextInput
             label="Creator"
             value={form.creator}
-            placeholder="例如：PaJii / 你的名字 / Studio 名称"
+            placeholder="Example: Kai Tang / your name / studio name"
             onChange={(value) => updateForm("creator", value)}
           />
           <OptionGrid
-            label="你想写一首关于什么的歌？"
+            label="What do you want the song to be about?"
             options={themeOptions}
             selected={[form.theme].filter(Boolean)}
             onToggle={(value) => updateForm("theme", value)}
             single
           />
           <TextInput
-            label="自定义主题"
+            label="Custom theme"
             value={form.theme}
-            placeholder="也可以直接输入自己的主题"
+            placeholder="You can also type your own theme here"
             onChange={(value) => updateForm("theme", value)}
           />
           <TextArea
-            label="歌曲故事"
+            label="Song story"
             value={form.story}
-            placeholder="例如：一个人在城市夜晚想起夏天错过的人。"
+            placeholder="Example: Someone remembers a missed summer romance during a lonely city night."
             onChange={(value) => updateForm("story", value)}
           />
           <TextArea
-            label="想表达的核心内容"
+            label="Core message"
             value={form.message}
-            placeholder="例如：遗憾不是失败，而是曾经认真爱过。"
+            placeholder="Example: Regret is not failure; it means the love was real."
             onChange={(value) => updateForm("message", value)}
           />
           <TextInput
-            label="歌曲适合的场景"
+            label="Best use case or scene"
             value={form.scene}
-            placeholder="例如：游戏剪辑、旅行 Vlog、深夜歌单、短视频 BGM"
+            placeholder="Example: gaming edit, travel vlog, late-night playlist, short-form BGM"
             onChange={(value) => updateForm("scene", value)}
           />
         </div>
@@ -384,7 +386,7 @@ function renderStep(
     case 1:
       return (
         <OptionGrid
-          label="选择歌词情绪，可以多选"
+          label="Choose one or more lyric moods"
           options={moodOptions}
           selected={form.moods}
           onToggle={(value) => toggleListValue("moods", value)}
@@ -394,22 +396,23 @@ function renderStep(
       return (
         <div className="space-y-5">
           <OptionGrid
-            label="选择歌词语言"
+            label="Choose the lyric language"
             options={languageOptions}
             selected={[form.lyricLanguage]}
             onToggle={(value) => updateForm("lyricLanguage", value)}
             single
           />
-          {form.lyricLanguage === "自定义语言" ? (
+          {form.lyricLanguage === "Custom Language" ? (
             <TextInput
-              label="自定义语言"
+              label="Custom language"
               value={form.customLanguage}
-              placeholder="例如：Italian / Thai / 粤语"
+              placeholder="Example: Italian / Thai / Cantonese"
               onChange={(value) => updateForm("customLanguage", value)}
             />
           ) : null}
           <GuidanceCard>
-            English 会要求 ChatGPT 写自然、适合演唱的英语歌词；中文会要求有画面感、不要太书面。
+            English lyrics will be guided toward native, singable songwriting. Mandarin lyrics will be guided toward
+            vivid imagery and natural phrasing.
           </GuidanceCard>
         </div>
       );
@@ -417,17 +420,17 @@ function renderStep(
       return (
         <div className="space-y-5">
           <OptionGrid
-            label="选择歌曲结构"
+            label="Choose the song structure"
             options={structureOptions}
             selected={[form.structure]}
             onToggle={(value) => updateForm("structure", value)}
             single
           />
-          {form.structure === "自定义结构" ? (
+          {form.structure === "Custom Structure" ? (
             <TextInput
-              label="自定义结构"
+              label="Custom structure"
               value={form.customStructure}
-              placeholder="例如：Intro + Hook + Rap Verse + Hook + Outro"
+              placeholder="Example: Intro + Hook + Rap Verse + Hook + Outro"
               onChange={(value) => updateForm("customStructure", value)}
             />
           ) : null}
@@ -436,16 +439,16 @@ function renderStep(
     case 4:
       return (
         <TextArea
-          label="必须出现的词"
+          label="Required words or phrases"
           value={form.requiredWords}
-          placeholder="例如：sugar rush, lonely night, PaJii, 猪里奥, city lights, summer rain"
+          placeholder="Example: sugar rush, lonely night, PaJii, city lights, summer rain"
           onChange={(value) => updateForm("requiredWords", value)}
         />
       );
     case 5:
       return (
         <OptionGrid
-          label="选择音乐风格，可以多选"
+          label="Choose one or more music styles"
           options={styleOptions}
           selected={form.styles}
           onToggle={(value) => toggleListValue("styles", value)}
@@ -470,23 +473,23 @@ function renderStep(
       return (
         <div className="space-y-5">
           <OptionGrid
-            label="选择人声类型"
+            label="Choose vocal types"
             options={vocalOptions}
             selected={form.vocals}
             onToggle={(value) => toggleListValue("vocals", value)}
           />
           <OptionGrid
-            label="选择演唱语言和口音"
+            label="Choose singing language or accent"
             options={accentOptions}
             selected={[form.accent]}
             onToggle={(value) => updateForm("accent", value)}
             single
           />
-          {form.accent === "自定义" ? (
+          {form.accent === "Custom" ? (
             <TextInput
-              label="自定义口音 / 语言"
+              label="Custom accent or singing language"
               value={form.customAccent}
-              placeholder="例如：Cantonese, Southern American, French accent"
+              placeholder="Example: Cantonese, Southern American, French accent"
               onChange={(value) => updateForm("customAccent", value)}
             />
           ) : null}
@@ -496,24 +499,24 @@ function renderStep(
       return (
         <div className="space-y-5">
           <OptionGrid
-            label="选择节奏"
+            label="Choose tempo"
             options={tempoOptions}
             selected={[form.tempo]}
             onToggle={(value) => updateForm("tempo", value)}
             single
           />
           <OptionGrid
-            label="选择 BPM 范围"
+            label="Choose BPM range"
             options={bpmOptions}
             selected={[form.bpmRange]}
             onToggle={(value) => updateForm("bpmRange", value)}
             single
           />
-          {form.bpmRange === "自定义 BPM" ? (
+          {form.bpmRange === "Custom BPM" ? (
             <TextInput
-              label="自定义 BPM"
+              label="Custom BPM"
               value={form.customBpm}
-              placeholder="例如：92 BPM / 128 BPM / 90-105 BPM"
+              placeholder="Example: 92 BPM / 128 BPM / 90-105 BPM"
               onChange={(value) => updateForm("customBpm", value)}
             />
           ) : null}
@@ -523,15 +526,15 @@ function renderStep(
       return (
         <div className="space-y-5">
           <GuidanceCard>
-            完整 Prompt 已在右侧生成。你可以继续返回修改，也可以直接复制给 ChatGPT，让它输出 Lyrics 和 Style。
+            The full prompt is ready in the preview panel. You can go back to refine details or copy it into ChatGPT.
           </GuidanceCard>
           <div className="grid gap-3 sm:grid-cols-2">
-            <SummaryItem label="主题" value={form.theme} />
-            <SummaryItem label="语言" value={form.lyricLanguage} />
-            <SummaryItem label="风格" value={form.styles.join(", ")} />
-            <SummaryItem label="乐器" value={form.instruments.join(", ")} />
-            <SummaryItem label="人声" value={form.vocals.join(", ")} />
-            <SummaryItem label="速度" value={`${form.tempo} / ${form.bpmRange}`} />
+            <SummaryItem label="Theme" value={form.theme} />
+            <SummaryItem label="Language" value={form.lyricLanguage} />
+            <SummaryItem label="Styles" value={form.styles.join(", ")} />
+            <SummaryItem label="Instruments" value={form.instruments.join(", ")} />
+            <SummaryItem label="Vocals" value={form.vocals.join(", ")} />
+            <SummaryItem label="Speed" value={`${form.tempo} / ${form.bpmRange}`} />
           </div>
         </div>
       );
@@ -644,7 +647,7 @@ function SummaryItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-lg border border-white/10 bg-white/[0.04] p-4">
       <span className="block text-xs uppercase tracking-[0.18em] text-slate-500">{label}</span>
-      <span className="mt-2 block min-h-6 text-sm text-slate-200">{value || "未填写"}</span>
+      <span className="mt-2 block min-h-6 text-sm text-slate-200">{value || "Not provided"}</span>
     </div>
   );
 }
